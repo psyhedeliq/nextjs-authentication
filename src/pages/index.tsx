@@ -4,6 +4,7 @@ import { useSession, signIn, signOut, getSession } from 'next-auth/react';
 export default function Home() {
     const { data: session } = useSession();
     console.log('-- Session --');
+    console.log('-- Session --');
     console.log(session);
 
     return (
