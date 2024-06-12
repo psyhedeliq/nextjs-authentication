@@ -7,9 +7,23 @@ export default function Home() {
 
     return (
         <>
-            <h1>Happy coding</h1>
-            <button onClick={() => signIn()}>Sign in</button> <br />
-            <button onClick={() => signOut()}>Sign out</button>
+            <div className="h-screen w-screen flex items-center justify-center">
+                {session ? (
+                    <div className="flex flex-col gap-1 items-center">
+                        <h2>{session?.user?.name}</h2>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={session?.user?.image!}
+                            alt=""
+                            className="w-32 h-32 rounded-full"
+                        />
+                        <h4>{session?.user?.email!}</h4>
+                        <button onClick={() => signOut()}>SIGN OUT</button>
+                    </div>
+                ) : (
+                    <button onClick={() => signIn()}>SIGN IN</button>
+                )}
+            </div>
         </>
     );
 }
