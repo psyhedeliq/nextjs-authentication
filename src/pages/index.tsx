@@ -19,6 +19,9 @@ export default function Home() {
                             className="w-32 h-32 rounded-full"
                         />
                         <h6>{session?.user?.email!}</h6>
+                        <span>
+                            Provider: <b>{session?.user?.provider}</b>
+                        </span>
                         <button onClick={() => signOut()}>SIGN OUT</button>
                     </div>
                 ) : (
