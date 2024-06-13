@@ -18,7 +18,7 @@ export default function Home() {
                             alt=""
                             className="w-32 h-32 rounded-full"
                         />
-                        <h4>{session?.user?.email!}</h4>
+                        <h6>{session?.user?.email!}</h6>
                         <button onClick={() => signOut()}>SIGN OUT</button>
                     </div>
                 ) : (
