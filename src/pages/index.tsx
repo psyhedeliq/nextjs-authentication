@@ -12,7 +12,7 @@ export default function Home() {
     const text2 = `In this build we use React.js, Next.js, Mongodb, Mongoose, Tailwind CSS, NextAuth.js, React Hook Form, Zod, Axios, Nodemailer, SMTP Service, Gmail SMTP, React Toastify, Handlebars and Bcrypt.`;
 
     return (
-        <div className="bg-black min-h-screen text-white flex items-center justify-center ">
+        <div className="home bg-black min-h-screen text-white flex items-center justify-center ">
             <div className="container mx-auto">
                 <div className="border border-white relative flex flex-col w-full rounded-lg">
                     <div className="flex flex-wrap justify-center items-center">
