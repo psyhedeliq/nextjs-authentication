@@ -9,6 +9,7 @@ import { BsTelephone } from 'react-icons/bs';
 import validator from 'validator';
 import { FiLock } from 'react-icons/fi';
 import zxcvbn from 'zxcvbn';
+import SlideButton from '../buttons/SlideButton';
 
 interface IRegisterFormProps {}
 type FormSchemaType = z.infer<typeof FormSchema>;
@@ -182,7 +183,13 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = (props) => {
                     </p>
                 )}
             </div>
-            <button type="submit">Submit</button>
+            <SlideButton
+                type="submit"
+                text="Sign up"
+                slide_text="Secure sign in"
+                icon={<FiLock />}
+                disabled={isSubmitting}
+            />
         </form>
     );
 };
