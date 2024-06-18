@@ -10,6 +10,7 @@ import validator from 'validator';
 import { FiLock } from 'react-icons/fi';
 import zxcvbn from 'zxcvbn';
 import SlideButton from '../buttons/SlideButton';
+import { toast } from 'react-toastify';
 
 interface IRegisterFormProps {}
 type FormSchemaType = z.infer<typeof FormSchema>;
@@ -190,6 +191,9 @@ const RegisterForm: FunctionComponent<IRegisterFormProps> = (props) => {
                 icon={<FiLock />}
                 disabled={isSubmitting}
             />
+            <button onClick={() => toast.success('Success message')}>
+                Toast
+            </button>
         </form>
     );
 };
