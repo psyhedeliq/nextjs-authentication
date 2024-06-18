@@ -54,6 +54,7 @@ const RegisterForm: FunctionComponent<IRegisterFormProps> = (props) => {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors, isSubmitting },
     } = useForm<FormSchemaType>({
         resolver: zodResolver(FormSchema),
@@ -65,6 +66,7 @@ const RegisterForm: FunctionComponent<IRegisterFormProps> = (props) => {
                 ...values,
             });
 
+            reset();
             toast.success(data.message);
         } catch (error: any) {
             toast.error(error.response.data.message);
