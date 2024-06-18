@@ -1,3 +1,5 @@
+import { FunctionComponent } from 'react';
+
 interface ISlideButtonProps {
     type: 'submit' | 'reset' | 'button';
     text: string;
@@ -6,8 +8,9 @@ interface ISlideButtonProps {
     icon: JSX.Element;
 }
 
-const SlideButton: React.FunctionComponent<ISlideButtonProps> = (props) => {
+const SlideButton: FunctionComponent<ISlideButtonProps> = (props) => {
     const { type, text, slide_text, disabled, icon } = props;
+
     return (
         <button
             type={type}

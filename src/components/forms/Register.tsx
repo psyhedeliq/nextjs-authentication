@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import Input from '../inputs/Input';
 import { CiUser } from 'react-icons/ci';
 import { useForm } from 'react-hook-form';
@@ -46,7 +46,7 @@ const FormSchema = z
         path: ['confirmPassword'],
     });
 
-const RegisterForm: React.FunctionComponent<IRegisterFormProps> = (props) => {
+const RegisterForm: FunctionComponent<IRegisterFormProps> = (props) => {
     const [passwordScore, setPasswordScore] = useState<number>(0);
     const {
         register,

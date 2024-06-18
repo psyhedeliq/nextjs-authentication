@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import {
     FieldError,
     FieldErrorsImpl,
@@ -24,9 +24,11 @@ interface IInputProps {
     disabled: boolean;
 }
 
-const Input: React.FunctionComponent<IInputProps> = (props) => {
+const Input: FunctionComponent<IInputProps> = (props) => {
     const { name, label, type, icon, placeholder, register, error, disabled } =
         props;
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+
     return (
         <div className="mt-3 w-[100%]">
             <label htmlFor={name} className="text-grey-700">
