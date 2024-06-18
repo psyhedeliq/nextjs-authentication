@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import { BeatLoader } from 'react-spinners';
 
 interface ISlideButtonProps {
     type: 'submit' | 'reset' | 'button';
@@ -18,7 +19,7 @@ const SlideButton: FunctionComponent<ISlideButtonProps> = (props) => {
             className="relative w-full inline-flex items-center justify-center px-8 py-3 mt-4 overflow-hidden font-medium bg-blue-500 transition duration-300 ease-out border-2 rounded-md group"
         >
             {disabled ? (
-                'Loading...'
+                <BeatLoader color="#fff" size={15} />
             ) : (
                 <>
                     <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full bg-blue-600 group-hover:translate-x-0 ease">
