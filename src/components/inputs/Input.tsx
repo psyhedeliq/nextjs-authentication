@@ -6,6 +6,7 @@ import {
     Merge,
     UseFormRegister,
 } from 'react-hook-form';
+import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { IoAlertCircle } from 'react-icons/io5';
 
 interface IInputProps {
@@ -42,12 +43,25 @@ const Input: FunctionComponent<IInputProps> = (props) => {
                     <span className="text-gray-500 text sm">{icon}</span>
                 </div>
                 <input
-                    type={type}
+                    type={showPassword ? 'text' : type}
                     placeholder={placeholder}
                     className="w-full py-2 pr-7 pl-8 block rounded-md border border-gray-300 outline-offset-2 outline-transparent focus:border-blue-500 focus:ring-indigo-500 focus:ring-2 text-sm"
                     {...register(name)}
                     style={{ borderColor: `${error ? '#ED4337' : ''}` }}
                 />
+
+                {/* Show and hide password */}
+                {(name == 'password' || name == 'confirmPassword') && (
+                    <div
+                        className="absolute top-2.5 right-2 text-xl text-gray-700 cursor-pointer"
+                        style={{ right: `${error ? '2rem' : ''}` }}
+                        onClick={() =>
+                            setShowPassword((prevValue) => !prevValue)
+                        }
+                    >
+                        {showPassword ? <ImEye /> : <ImEyeBlocked />}
+                    </div>
+                )}
 
                 {error && (
                     <div className="fill-red-500 absolute right-2 top-2 5 text-xl">
