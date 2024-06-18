@@ -29,6 +29,12 @@ const Input: FunctionComponent<IInputProps> = (props) => {
     const { name, label, type, icon, placeholder, register, error, disabled } =
         props;
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const calculateTranslate = (): string => {
+        if (name == 'first_name' || name == 'last_name')
+            return 'translateY(-22px)';
+
+        return 'translateY(-12px)';
+    };
 
     return (
         <div className="mt-3 w-[100%]">
@@ -38,7 +44,9 @@ const Input: FunctionComponent<IInputProps> = (props) => {
             <div className="relative mt-1 rounded-md">
                 <div
                     className="pointer-event-none absolute left-0 top-0.5 inset-y-0 flex items-center pl-3"
-                    style={{ transform: `${error ? 'translateY(-12px)' : ''}` }}
+                    style={{
+                        transform: `${error ? calculateTranslate() : ''}`,
+                    }}
                 >
                     <span className="text-gray-500 text sm">{icon}</span>
                 </div>
@@ -50,7 +58,7 @@ const Input: FunctionComponent<IInputProps> = (props) => {
                     style={{ borderColor: `${error ? '#ED4337' : ''}` }}
                 />
 
-                {/* Show and hide password */}
+                {/* --Show and hide password-- */}
                 {(name == 'password' || name == 'confirmPassword') && (
                     <div
                         className="absolute top-2.5 right-2 text-xl text-gray-700 cursor-pointer"
