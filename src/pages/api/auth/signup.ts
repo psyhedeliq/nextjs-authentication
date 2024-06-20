@@ -4,7 +4,6 @@ import connectDb from '@/utils/connectDb';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
-import { create } from 'domain';
 import { createActivationToken } from '@/utils/tokens';
 import { activateTemplateEmail } from '@/components/emailTemplates/activate';
 import sendMail from '@/utils/sendMail';
