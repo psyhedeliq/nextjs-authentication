@@ -22,9 +22,16 @@ export default async function handler(
         ) as UserToken;
 
         const userDb = await User.findById(userToken.id);
+        if (!userDb) {
+            return res
+                .status(400)
+                .json({ message: 'This account no longer exists.' });
+        }
+
         if (userDb.emailVerified) {
             return res.status(400).json({ message: 'User already activated.' });
         }
+
         await User.findByIdAndUpdate(userDb.id, { emailVerified: true });
 
         res.json({
