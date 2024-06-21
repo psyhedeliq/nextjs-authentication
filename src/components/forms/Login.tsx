@@ -7,8 +7,13 @@ import { TfiEmail } from 'react-icons/tfi';
 import { FiLock } from 'react-icons/fi';
 import SlideButton from '../buttons/SlideButton';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import { signIn } from 'next-auth/react';
 
-interface ILoginFormProps {}
+interface ILoginFormProps {
+    callbackUrl: string;
+    csrfToken: string;
+}
 type FormSchemaType = z.infer<typeof FormSchema>;
 
 const FormSchema = z.object({
@@ -20,6 +25,7 @@ const FormSchema = z.object({
 });
 
 const LoginForm: FunctionComponent<ILoginFormProps> = (props) => {
+    const { callbackUrl, csrfToken } = props;
     const router = useRouter();
     const path = router.pathname;
     const {
@@ -29,7 +35,20 @@ const LoginForm: FunctionComponent<ILoginFormProps> = (props) => {
     } = useForm<FormSchemaType>({
         resolver: zodResolver(FormSchema),
     });
-    const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {};
+    const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {
+        const res: any = await signIn('credentials', {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+            callbackUrl,
+        });
+
+        if (res?.error) {
+            return toast.error(res.error);
+        } else {
+            return router.push('/'); // you could also do router.push(callbackUrl)
+        }
+    };
 
     return (
         <div className="w-full px-12 py-4">
@@ -52,7 +71,19 @@ const LoginForm: FunctionComponent<ILoginFormProps> = (props) => {
                     Sign up
                 </a>
             </p>
-            <form className="my-8 text-sm" onSubmit={handleSubmit(onSubmit)}>
+            <form
+                method="post"
+                action="/api/auth/signin/email"
+                className="my-8 text-sm"
+                onSubmit={handleSubmit(onSubmit)}
+            >
+                {/* What is a CSRF token?
+                A CSRF Token is a secret, unique and unpredictable value a server-side application generates in order to protect CSRF vulnerable resources. The tokens are generated and submitted by the server-side application in a subsequent HTTP request made by the client. */}
+                <input
+                    type="hidden"
+                    name="csrfToken"
+                    defaultValue={csrfToken}
+                />
                 <Input
                     name="email"
                     label="Email address"
