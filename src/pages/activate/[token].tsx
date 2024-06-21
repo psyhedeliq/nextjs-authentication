@@ -54,7 +54,6 @@ export default function activate({ token }: { token: string }) {
 export async function getServerSideProps(ctx: NextPageContext) {
     const { query } = ctx;
     const token = query.token;
-    console.log('TOKEN:', token);
 
     return {
         props: { token },
