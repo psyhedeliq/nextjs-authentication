@@ -83,5 +83,3 @@ export async function getServerSideProps(ctx: NextPageContext) {
         },
     };
 }
-
-// TODO: Change picture if sign in
