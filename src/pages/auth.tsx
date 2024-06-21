@@ -36,7 +36,7 @@ export default function auth({
                         </span>
                         <div className="w-full h-[1px] bg-gray-300"></div>
                     </div>
-                    <div className="mt-3 grid grid-cols-2 gap-x-4 gat-y-2">
+                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gat-y-2 px-2">
                         {providers.map((provider: any) => {
                             if (provider.name == 'Credentials') return;
                             return (
