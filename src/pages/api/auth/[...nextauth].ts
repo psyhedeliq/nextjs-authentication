@@ -77,6 +77,9 @@ export default NextAuth({
     session: {
         strategy: 'jwt',
     },
+    pages: {
+        signIn: '/auth',
+    },
     callbacks: {
         async jwt({
             token,
@@ -91,11 +94,10 @@ export default NextAuth({
             profile?: Profile | undefined;
             isNewUser?: boolean | undefined;
         }) {
-            console.log({ account });
             if (user) {
                 token.provider = account?.provider;
             }
-            console.log({ token });
+
             return token;
         },
         async session({
