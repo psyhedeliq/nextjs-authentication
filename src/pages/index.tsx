@@ -8,7 +8,7 @@ export default function Home() {
     const { data: session } = useSession();
 
     const text1 = `This is a simple example of how to use NextAuth.js with Next.js. It includes a sign-in form with support for signing in with Google, Facebook, GitHub, Twitter, Discord and Auth0.`;
-    const text2 = `In this build we use React.js, Next.js, Mongodb, Mongoose, Tailwind CSS, NextAuth.js, React Hook Form, Zod, Axios, Nodemailer, SMTP Service, Gmail SMTP, React Toastify, Handlebars and Bcrypt. We have continuous integration and deployment with Vercel.`;
+    const text2 = `In this build we use React.js, Next.js, MongoDb, Mongoose, Tailwind CSS, NextAuth.js, React Hook Form, Zod, Axios, Nodemailer, SMTP Service, Gmail SMTP, React Toastify, Handlebars and Bcrypt. We have continuous integration and deployment with Vercel.`;
 
     return (
         <div className="home bg-black min-h-screen text-white flex items-center justify-center ">
