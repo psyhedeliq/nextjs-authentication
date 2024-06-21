@@ -1,4 +1,4 @@
-export const resetPassword = `
+export const resetPasswordTemplateEmail = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
